@@ -21,7 +21,7 @@ def washapp():
 
 
 @app.route('/webhook', methods=['GET'])
-def validate():
+def validate_token():
 	token = os.environ['TOKEN']
 	verify_token = request.args["hub.verify_token"]
 	if verify_token == token:

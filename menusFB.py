@@ -13,6 +13,7 @@ class menusFB:
 		self.clienteFB = reqsFB(req)
 		self.req = req
 		self.reqbackend = reqsbackend()
+		self.token = token
 
 	def menu_principal(self):
 		payload = {}
@@ -65,3 +66,10 @@ class menusFB:
 					if req['message']['text'].lower() == texto:
 						return True
 		return False
+
+
+
+
+
+
+

@@ -9,6 +9,7 @@ from menusFB import menusFB
 from checkEvent import checkEvent
 from postback import postback
 from reqsbackend import reqsbackend
+from validate import validate
 
 app = Flask(__name__)
 
@@ -45,10 +46,10 @@ def webhook():
 	event = checkEvent(res).get_event()
 	menu = menusFB(url_send,os.environ['TOKEN'],res)
 	req_backend = reqsbackend()
-
+	validate_obj = validate(url_send,os.environ['TOKEN'],res)
 
 	if event is 'postback':
-		postback_obj = postback(res['entry'][0]['messaging'][0]['postback'],menu)
+		postback_obj = postback(res['entry'][0]['messaging'][0]['postback'],menu,validate_obj)
 		postback_obj.derivar_postback()
 
 	elif event is 'message':

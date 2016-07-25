@@ -12,3 +12,18 @@ class reqsbackend:
 			if res[key] == None:
 				datos.append(key)
 		return datos
+
+
+	def existeUser(self,idfb):
+		res = requests.get(self.url + '/fb/' + idfb).json()
+		return res['exist']
+
+
+	def crearUser(self,payload):
+		user_datos = payload
+
+		res = requests.post(self.url + 'insert', payload=user_datos)
+		if res['response'] is 'successful':
+			return True
+		else:
+			return False

@@ -36,10 +36,10 @@ def webhook():
 
 	event = checkEvent(res).get_event()
 	menu = menusFB(url_send,os.environ['TOKEN'],res)
-	validar = validate(url_send,os.environ['TOKEN'],res)
+	validate_obj = validate(url_send,os.environ['TOKEN'],res)
 
 	if event is 'postback':
-		postback_obj = postback(res['entry'][0]['messaging'][0]['postback'],menu,validar)
+		postback_obj = postback(res['entry'][0]['messaging'][0]['postback'],menu,validate_obj)
 		postback_obj.derivar_postback()
 	elif event is 'message':
 		if menu.contieneTexto('menu'):

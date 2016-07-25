@@ -5,8 +5,6 @@ import urllib2
 from reqsFB import reqsFB
 from reqsbackend import reqsbackend
 
-
-
 class validate:
 	def __init__(self,url,token,req):
 		self.url = url + token

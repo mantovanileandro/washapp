@@ -13,7 +13,7 @@ class validate:
 		self.reqbackend = reqsbackend()
 
 	def existe(self):
-		res = reqsbackend.existeUser(self.clienteFB.idSender())
+		res = self.reqsbackend.existeUser(self.clienteFB.idSender())
 		if res == True:
 			print "existe"
 			return True

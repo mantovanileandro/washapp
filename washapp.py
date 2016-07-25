@@ -36,7 +36,7 @@ def webhook():
 
 	event = checkEvent(res).get_event()
 	menu = menusFB(url_send,os.environ['TOKEN'],res)
-	validate = validar(url_send,os.environ['TOKEN'],res)
+	validar = validate(url_send,os.environ['TOKEN'],res)
 
 	if event is 'postback':
 		postback_obj = postback(res['entry'][0]['messaging'][0]['postback'],menu,validar)

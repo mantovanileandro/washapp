@@ -36,7 +36,7 @@ class postback:
                                 else:
                                         #mostrar repetir_pedido
                         else:
-                                # tomo yo
+                                print "no existe"
 
                 elif self.postback == "TUTORIAL_VOLVER":
                         self.menu.menu_principal()

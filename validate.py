@@ -14,8 +14,5 @@ class validate:
 
 	def existe(self):
 		res = self.reqsbackend.existeUser(self.clienteFB.idSender())
-		if res == True:
-			print "existe"
-			return True
-		else:
-			return False
+		print res
+		return res

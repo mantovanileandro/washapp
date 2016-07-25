@@ -25,10 +25,10 @@ class postback:
 
                 elif self.postback == 'PRINCIPAL_PEDIDO':
                         if self.validate.existe():
+                                print "existe"
 
-                                # toma lean
                         else:
-                                # tomo yo
+                                print "no existe"
 
                 elif self.postback == "TUTORIAL_VOLVER":
                         self.menu.menu_principal()

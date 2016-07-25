@@ -3,6 +3,7 @@ import requests
 class reqsbackend:
 	def __init__(self):
 		self.url = "http://172.31.15.182/"
+		
 
 	def estaCompleto(self,idfb):
 		datos = []

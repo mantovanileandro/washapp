@@ -12,6 +12,15 @@ class validate:
 		self.req = req
 		self.reqbackend = reqsbackend()
 
+	def existe(self):
+		res = reqsbackend.existeUser(self.clienteFB.idSender())
+		if res == True:
+			print "existe"
+			return True
+		else:
+			return False
+
+
 	# def verificarDatos(self):
 	# 	datosfaltantes = []
 	# 	datosfaltantes = self.reqbackend.estaCompleto(self.clienteFB.idSender())

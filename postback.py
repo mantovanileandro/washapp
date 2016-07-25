@@ -24,7 +24,11 @@ class postback:
                         self.menu.enviarMensaje("STATUS")
 
                 elif self.postback == 'PRINCIPAL_PEDIDO':
-                        self.validate.verificarDatos()
+                        if self.validate.existe():
+
+                                # toma lean
+                        else:
+                                # tomo yo
 
                 elif self.postback == "TUTORIAL_VOLVER":
                         self.menu.menu_principal()

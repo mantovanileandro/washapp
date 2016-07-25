@@ -42,7 +42,7 @@ def parse_user(res):
 #### routes ####
 ################
 
-@user_blueprint.route('/<id>', methods=['GET','POST']) 
+@user_blueprint.route('/<id>', methods=['GET','POST'])
 def existUser(id):
 	res = service.getUser(id,'custom')	
 

@@ -15,6 +15,8 @@ class validate:
 		self.reqbackend = reqsbackend()
 		
 
+	# def existe(self):
+		
 	def verificarDatos(self):
 		datosfaltantes = []
 		datosfaltantes = self.reqbackend.estaCompleto(self.clienteFB.idSender())

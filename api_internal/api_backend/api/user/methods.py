@@ -47,9 +47,9 @@ def existUser(id):
 	res = service.getUser(id,'custom')	
 
 	if res is not None:
-		res = {'exist':'true'}
+		res = {'exist':'True'}
 	else:
-		res = {'exist':'false'}
+		res = {'exist':'False'}
         
 	return jsonify(res)
 
@@ -58,9 +58,9 @@ def existFacebookUser(fbId):
         res = service.getUser(fbId,'fb')
         
 	if res is not None:
-                res = {'exist':'true'}
+                res = {'exist':'True'}
         else:
-                res = {'exist':'false'}
+                res = {'exist':'False'}
 
 	return jsonify(res)
 

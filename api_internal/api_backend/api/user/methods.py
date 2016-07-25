@@ -117,6 +117,6 @@ def modifyUser():
 
 	return jsonify(dict_res)
 		
-@user_blueprint.route('/ping', methods=['GET']) 
+@user_blueprint.route('/ping', methods=['GET'])
 def ping():
 	return "Pong"

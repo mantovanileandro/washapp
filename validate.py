@@ -12,10 +12,10 @@ class validate:
 		self.req = req
 		self.reqbackend = reqsbackend()
 
-	def verificarDatos(self):
-		datosfaltantes = []
-		datosfaltantes = self.reqbackend.estaCompleto(self.clienteFB.idSender())
-		if len(datosfaltantes) != 0:
-			self.enviarMensaje("No tenes los datos cargados :( ")
-			for dato in datosfaltantes:
-				self.enviarMensaje("me indicarias tu %s :" %dato )
+	# def verificarDatos(self):
+	# 	datosfaltantes = []
+	# 	datosfaltantes = self.reqbackend.estaCompleto(self.clienteFB.idSender())
+	# 	if len(datosfaltantes) != 0:
+	# 		self.enviarMensaje("No tenes los datos cargados :( ")
+	# 		for dato in datosfaltantes:
+	# 			self.enviarMensaje("me indicarias tu %s :" %dato )

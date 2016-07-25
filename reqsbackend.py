@@ -1,4 +1,5 @@
 import requests
+import json
 
 class reqsbackend:
 	def __init__(self):
@@ -16,7 +17,8 @@ class reqsbackend:
 
 
 	def existeUser(self,idfb):
-		res = requests.get(self.url + '/fb/' + idfb).json()
+		res = requests.get(self.url + '/fb/' + idfb)
+		res = res.json()
 		return res['exist']
 
 

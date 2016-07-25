@@ -34,8 +34,10 @@ class postback:
                                 res = self.req_backend.getLastPedido(self.fbid)
                                 if res != None:
                                         #mostrar laundry
+                                        print "mostrar laundry"
                                 else:
                                         #mostrar repetir_pedido
+                                        print "mostrar pedido"
                         else:
                                 print "no existe"
 

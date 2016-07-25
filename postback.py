@@ -29,7 +29,8 @@ class postback:
                         self.menu.enviarMensaje("STATUS")
 
                 elif self.postback == 'PRINCIPAL_PEDIDO':
-                        if self.validate.existe():
+                        if self.req_backend.existeUser(self.fbid):
+                                print "EAEAEA"
                                 res = self.req_backend.getLastPedido(self.fbid)
                                 if res != None:
                                         #mostrar laundry

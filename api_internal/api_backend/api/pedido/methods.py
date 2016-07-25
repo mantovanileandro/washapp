@@ -57,7 +57,7 @@ def new_pedido():
 
 #El payload tiene que venir con el nombre del campo por el cual hacer la query. Ejemplo: laundry_id, payment_id, user_id, delivery_id o reclamo_id
 @pedido_blueprint.route('/detail', methods=['POST'])
-def get_pedido():
+def get_last_pedido():
 	json = request.get_json(force=True)
         dict_res = {}
 

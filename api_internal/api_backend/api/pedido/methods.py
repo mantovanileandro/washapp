@@ -67,7 +67,9 @@ def get_last_pedido():
 		dict_res = parse_pedido(res)
 	else:
 		dict_res['response'] = 'error - BAD REQUEST'
-
+	
+	print dict_res
+	
 	return jsonify(dict_res)	
 
 #El payload tiene que venir con el pedido_id obligatoriamente y ademas tiene que tener los campos que se quieren updetear de la db

@@ -110,7 +110,7 @@ class menusFB:
 
 
 
-	def pedirDato(dic_validador,val):
+	def pedirDato(self,dic_validador,val):
 		if val == True:
 			dic_validador[self.clienteFB.idSender()] = "LOCALIDAD"
 			self.enviarMensaje(self.preguntas["LOCALIDAD"])

@@ -45,10 +45,11 @@ class postback:
                                         print res
                                         if res != None:
                                                 laundrys = res['response']
+                                                self.menu.mostrarLaundrys(laundrys)
                                         else:
                                                 print "no hay laundrys disponibles"
                                         #armar el payload con las lavanderias (mostrar menu)
-                                        self.menu.mostrarLaundrys(laundrys)
+                                        
                                 else:
                                         #mostrar repetir_pedido
                                         print "mostrar repetir_pedido"

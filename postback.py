@@ -43,7 +43,7 @@ class postback:
                                         #obtener todas las lavanderias para esa location
                                         res = self.req_backend.getAllLaundrys(location)
                                         print res
-                                        if res is None:
+                                        if res != None:
                                                 laundrys = res['response']
                                         else:
                                                 print "no hay laundrys disponibles"

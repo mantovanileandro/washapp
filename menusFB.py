@@ -119,7 +119,7 @@ class menusFB:
 		if val == True:
 			dic_validador[self.clienteFB.idSender()] = "LOCALIDAD"
 			self.enviarMensaje(self.preguntas["LOCALIDAD"])
-			break
+			return
 		
 		dato = dic_validador[self.clienteFB.idSender()]
 		print dato		

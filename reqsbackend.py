@@ -34,9 +34,10 @@ class reqsbackend:
 	def getLastPedido(self,fbid):
 		#obtener el ultimo pedido COMPLETADO (hay que cambiar la api de backend)
 		payload = {'user_id': fbid}
-		res = requests.post(self.url + 'pedido/detail',data=payload).json()
+		res = requests.post(self.url + 'pedido/detail',data=payload)
 
 		print res
+		print res.json()
 
 		if not ('error' in res['response']):
 			return res['response']

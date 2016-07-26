@@ -35,7 +35,7 @@ class reqsbackend:
 		#obtener el ultimo pedido COMPLETADO (hay que cambiar la api de backend)
 		payload = {}
 		payload['user_id'] = fbid
-		res = requests.post(self.url + 'pedido/detail',data=json.dumps(payload)).json()
+		res = requests.post(self.url + 'pedido/detail',data=json.dumps(payload))
 
 		res = res.json()
 

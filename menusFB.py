@@ -79,11 +79,12 @@ class menusFB:
 			print laundry
 
 			btns = []
-			btns.append(button)
 			
 			postback = 'SELECT_LAUNDRY_ID_%s' %laundry['id']
 			button2 = {"type":"postback","title":"Seleccionar","payload": postback}
 			btns.append(button2)
+
+			btns.append(button)
 
 			element = json.loads(laundry['desc'])
 			element["buttons"] = btns

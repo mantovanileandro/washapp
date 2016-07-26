@@ -35,20 +35,18 @@ class postback:
                                 res = self.req_backend.getLastPedido(self.fbid)
 
                                 if res is None:
-                                        #mostrar laundry
-                                        print "mostrar laundry"
+                                        #mostrar laundrys
 
                                         #obtener la location del usuario
                                         location = self.req_backend.getUserLocation(self.fbid)
                                         #obtener todas las lavanderias para esa location
                                         res = self.req_backend.getAllLaundrys(location)
-                                        print res
+
                                         if res != None:
                                                 laundrys = res['response']
                                                 self.menu.mostrarLaundrys(laundrys)
                                         else:
                                                 print "no hay laundrys disponibles"
-                                        #armar el payload con las lavanderias (mostrar menu)
                                         
                                 else:
                                         #mostrar repetir_pedido
@@ -59,3 +57,19 @@ class postback:
 
                 elif self.postback == "TUTORIAL_VOLVER":
                         self.menu.menu_principal()
+                elif self.postback == 'SELECT_LAUNDRY_VOLVER':
+                        self.menu.menu_principal()
+                elif 'SELECT_LAUNDRY_ID_' in self.postback:
+                        laundry_id = self.postback.split('_')[-1]
+                        if self.req_backend.setNewPedido(self.fbid, laundry_id):
+                                #mostrar seleccionar horario
+                                print "seleccionar horario"
+                        else:
+                                print "hubo un error al insertar la lavanderia"
+
+
+
+
+
+
+

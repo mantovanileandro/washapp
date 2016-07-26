@@ -49,7 +49,7 @@ class postback:
                                         print "mostrar repetir_pedido"
                         else:
                                 print "ENTRO AL ELSE"
-                                self.menusFB.pedirDato(self.dic_validador,True)
+                                self.menus.pedirDato(self.dic_validador,True)
 
                 elif self.postback == "TUTORIAL_VOLVER":
                         self.menu.menu_principal()

@@ -48,8 +48,6 @@ class reqsbackend:
 
 	def getUserLocation(self,fbid):
 		res = requests.get(self.url + "user/fb/" + fbid + "/detail").json()
-		print res
-		print fbid
 		return res['localidad']
 
 
@@ -57,6 +55,8 @@ class reqsbackend:
 		payload = {}
 		payload['localidad'] = localidad
 		res = requests.post(self.url + 'laundry/getall',data=json.dumps(payload)).json()
+
+		print res
 
 		if not ('error' in res['response']):
 			return res['response']

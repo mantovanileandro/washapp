@@ -60,7 +60,7 @@ class reqsbackend:
 
 			print res
 
-			if res['response'] is 'successful':
+			if 'successful' in res['response']:
 				return True
 			else:
 				return False

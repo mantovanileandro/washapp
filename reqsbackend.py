@@ -36,6 +36,8 @@ class reqsbackend:
 		payload = {'user_id': fbid}
 		res = requests.post(self.url + 'detail',data=payload)
 
+		print res
+
 		if not ('error' in res['response']):
 			return res['response']
 		else:

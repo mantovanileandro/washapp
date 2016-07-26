@@ -78,8 +78,8 @@ class menusFB:
 			postback = 'SELECT_LAUNDRY_ID_%s' %laundry['id']
 			button = {"type":"postback","title":"Seleccionar","payload": postback}
 
-			desc = json.loads(laundry['desc'])
-			element = {desc, "buttons" : btns}
+			element = json.loads(laundry['desc'])
+			element["buttons"] = btns
 			payload['message']['attachment']['payload']['elements'].append(element)
 			
 			#element = {"title": "rift","subtitle": "Next-generation virtual reality","image_url": "http://messengerdemo.parseapp.com/img/rift.png"}

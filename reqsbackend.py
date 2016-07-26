@@ -1,4 +1,5 @@
 import requests
+import json
 
 
 class reqsbackend:
@@ -24,7 +25,7 @@ class reqsbackend:
 	def crearUser(self,payload):
 		user_datos = payload
 
-		res = requests.post(self.url + 'insert', payload=user_datos)
+		res = requests.post(self.url + 'user/insert', data=json.dumps(user_datos))
 		if res['response'] is 'successful':
 			return True
 		else:
@@ -33,7 +34,13 @@ class reqsbackend:
 
 	def getLastPedido(self,fbid):
 		#obtener el ultimo pedido COMPLETADO (hay que cambiar la api de backend)
-		res = requests.post(url + 'detail',payload={'user_id':fbid})
+		payload = {}
+		payload['user_id'] = fbid
+		res = requests.post(self.url + 'pedido/detail',data=json.dumps(payload))
+		res = res.json()
+
+		#print res.text
+		#print res.json()
 
 		if not ('error' in res['response']):
 			return res['response']

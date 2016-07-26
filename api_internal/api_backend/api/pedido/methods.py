@@ -60,14 +60,14 @@ def new_pedido():
 def get_last_pedido():
 	json = request.get_json(force=True)
         dict_res = {}
-
+	
 	res = service.getPedido(json)
 
 	if res is not None:
 		dict_res = parse_pedido(res)
 	else:
 		dict_res['response'] = 'error - BAD REQUEST'
-
+	
 	return jsonify(dict_res)	
 
 #El payload tiene que venir con el pedido_id obligatoriamente y ademas tiene que tener los campos que se quieren updetear de la db

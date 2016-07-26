@@ -30,7 +30,8 @@ class postback:
                         self.menu.enviarMensaje("STATUS")
 
                 elif self.postback == 'PRINCIPAL_PEDIDO':
-                        if self.req_backend.existeUser(self.fbid):
+                        print self.req_backend.existeUser(self.fbid)
+                        if self.req_backend.existeUser(self.fbid) == "True":
                                 res = self.req_backend.getLastPedido(self.fbid)
 
                                 if res is None:

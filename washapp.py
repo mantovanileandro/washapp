@@ -13,7 +13,7 @@ from validate import validate
 
 app = Flask(__name__)
 
-
+dic_validador = {}
 url_send = 'https://graph.facebook.com/v2.6/me/messages?access_token='
 url_user_datos = 'https://graph.facebook.com/v2.6/<USER_ID>?fields=first_name,last_name,gender&access_token='
 
@@ -44,7 +44,7 @@ def webhook():
 	res = request.get_json(silent=True)
 
 	event = checkEvent(res).get_event()
-	menu = menusFB(url_send,os.environ['TOKEN'],res)
+	menu = menusFB(url_send,os.environ['TOKEN'],res,dic_validador)
 	req_backend = reqsbackend()
 	validate_obj = validate(url_send,os.environ['TOKEN'],res)
 
@@ -53,6 +53,8 @@ def webhook():
 		postback_obj.derivar_postback()
 
 	elif event is 'message':
+		if menu.solicitar_dato(dic_validador):
+			menu.pedirDato()
 		if menu.contieneTexto('menu'):
 			menu.menu_principal()
 

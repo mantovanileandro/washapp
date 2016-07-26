@@ -72,11 +72,11 @@ class menusFB:
 
 
 		print "laundrys ----------"
-		print laundrys
+		#print laundrys
 
 		for laundry in laundrys['laundrys']:
 
-			print laundry
+			#print laundry
 
 			btns = []
 			
@@ -89,6 +89,8 @@ class menusFB:
 			element = json.loads(laundry['desc'])
 			element["buttons"] = btns
 			payload['message']['attachment']['payload']['elements'].append(element)
+
+			print postback
 			
 			#element = {"title": "rift","subtitle": "Next-generation virtual reality","image_url": "http://messengerdemo.parseapp.com/img/rift.png"}
 			#payload['message']['attachment']['payload']['elements'].append(element)

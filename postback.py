@@ -8,7 +8,7 @@ from reqsbackend import reqsbackend
 
 
 class postback:
-        def __init__(self,req,menusFB,validate):
+        def __init__(self,req,menusFB,validate,dic_validador):
                 #self.req = req
                 self.event = req['entry'][0]['messaging'][0]
 
@@ -18,6 +18,7 @@ class postback:
                 self.menu = menusFB
                 self.validate = validate
                 self.req_backend = reqsbackend()
+                self.dic_validador = dic_validador
 
 
         def derivar_postback(self):
@@ -38,7 +39,8 @@ class postback:
                                         #mostrar repetir_pedido
                                         print "mostrar pedido"
                         else:
-                                self.menusFB.pedirDato(self.fbid,"INICIA")
+                                print "ENTRO AL ELSE"
+                                self.menusFB.pedirDato(self.dic_validador,True)
 
                 elif self.postback == "TUTORIAL_VOLVER":
                         self.menu.menu_principal()

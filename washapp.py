@@ -10,6 +10,7 @@ from checkEvent import checkEvent
 from postback import postback
 from reqsbackend import reqsbackend
 from validate import validate
+from reqFB import reqFB
 
 app = Flask(__name__)
 
@@ -43,18 +44,19 @@ def validate_token():
 def webhook():
 	res = request.get_json(silent=True)
 
+	reqFB = reqFB(res)
 	event = checkEvent(res).get_event()
-	menu = menusFB(url_send,os.environ['TOKEN'],res,dic_validador)
+	menu = menusFB(url_send,os.environ['TOKEN'],res)
 	req_backend = reqsbackend()
 	validate_obj = validate(url_send,os.environ['TOKEN'],res)
 
 	if event is 'postback':
-		postback_obj = postback(res,menu,validate_obj)
+		postback_obj = postback(res,menu,validate_obj,dic_validador)
 		postback_obj.derivar_postback()
 
 	elif event is 'message':
 		if menu.solicitar_dato(dic_validador):
-			menu.pedirDato()
+			menu.pedirDato(dic_validador[])
 		if menu.contieneTexto('menu'):
 			menu.menu_principal()
 

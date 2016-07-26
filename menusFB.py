@@ -14,14 +14,13 @@ def buscarUsuarioEnDic(dic,fbid):
 
 
 class menusFB:
-	def __init__(self,url,token,req,dic_validador):
+	def __init__(self,url,token,req):
 		self.url = url + token
 		self.clienteFB = reqsFB(req)
 		self.req = req
 		self.reqbackend = reqsbackend()
 		self.token = token
 		self.preguntas = {"INICIA" : "De que localidad sos?" , "LOCALIDAD" : "De que localidad sos?" , "DIRECCION" : "Como es tu direccion?"}
-		self.dic_validador = dic_validador
 
 	def menu_principal(self):
 		payload = {}
@@ -84,12 +83,16 @@ class menusFB:
 
 
 
-	def pedirDato(self,fbid,dato,dic_validador):
-		if dato == "INICIA":
-			self.dic_validador[fbid] = "LOCALIDAD"
+	def pedirDato(dic_validador,val):
+		if val == True:
+			dic_validador[self.clienteFB.idSender()] = "LOCALIDAD"
 			self.enviarMensaje(self.preguntas["LOCALIDAD"])
-		elif dato == "LOCALIDAD":
-			self.dic_validador[self.clienteFB.idSender()] = "DIRECCION"
+		
+		dato = dic_validador[self.clienteFB.idSender()]
+		print dato		
+		
+		if dato == "LOCALIDAD":
+			dic_validador[self.clienteFB.idSender()] = "DIRECCION"
 			self.enviarMensaje(self.preguntas["DIRECCION"])
 
 

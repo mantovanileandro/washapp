@@ -31,6 +31,7 @@ class postback:
                 elif self.postback == 'PRINCIPAL_PEDIDO':
                         if self.req_backend.existeUser(self.fbid):
                                 res = self.req_backend.getLastPedido(self.fbid)
+                                print res
                                 if res != None:
                                         #mostrar laundry
                                         print "mostrar laundry"

@@ -60,6 +60,33 @@ class menusFB:
 		print res
 
 
+	def mostrarLaundrys(self,laundrys):
+		payload = {}
+		payload['recipient'] = {"id":self.clienteFB.idSender()}
+		payload['message'] = {"attachment":{}}
+		payload['message']['attachment']['type'] = 'template'
+		payload['message']['attachment']['payload'] = {}
+		payload['message']['attachment']['payload']['template_type'] = 'generic'
+		payload['message']['attachment']['payload']['elements'] = []
+		button = {"type":"postback","title":"Volver","payload":"SELECT_LAUNDRY_VOLVER"}
+
+		for laundry in laundrys:
+			btns = []
+			btns.append(button)
+			
+			postback = 'SELECT_LAUNDRY_ID_%s' %laundry['id']
+			button = {"type":"postback","title":"Seleccionar","payload": postback}
+
+			element = json.loads(laundry['desc'])
+			element["buttons"] = btns
+			payload['message']['attachment']['payload']['elements'].append(element)
+			
+			#element = {"title": "rift","subtitle": "Next-generation virtual reality","image_url": "http://messengerdemo.parseapp.com/img/rift.png"}
+			#payload['message']['attachment']['payload']['elements'].append(element)
+
+
+		res = requests.post(self.url,json=payload)
+
 	def enviarMensaje(self,texto):
 		payload = {"recipient": {"id":self.clienteFB.idSender()},"message": {"text":texto}}
 		res = requests.post(self.url,json=payload)

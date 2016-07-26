@@ -32,12 +32,20 @@ class postback:
                 elif self.postback == 'PRINCIPAL_PEDIDO':
                         if self.req_backend.existeUser(self.fbid):
                                 res = self.req_backend.getLastPedido(self.fbid)
-                                if res != None:
+
+                                if res is None:
                                         #mostrar laundry
                                         print "mostrar laundry"
+
+                                        #obtener la location del usuario
+                                        location = self.req_backend.getUserLocation(self.fbid)
+                                        #obtener todas las lavanderias para esa location
+                                        laundrys = self.req_backend.getAllLaundrys(location)
+                                        #armar el payload con las lavanderias (mostrar menu)
+                                        self.menu.mostrarLaundrys(laundrys)
                                 else:
                                         #mostrar repetir_pedido
-                                        print "mostrar pedido"
+                                        print "mostrar repetir_pedido"
                         else:
                                 print "ENTRO AL ELSE"
                                 self.menusFB.pedirDato(self.dic_validador,True)

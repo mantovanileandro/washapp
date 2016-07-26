@@ -74,7 +74,7 @@ class menusFB:
 		print "laundrys ----------"
 		print laundrys
 
-		for laundry in laundrys:
+		for laundry in laundrys['laundrys']:
 
 			print laundry
 

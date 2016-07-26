@@ -42,7 +42,8 @@ class postback:
                                         location = self.req_backend.getUserLocation(self.fbid)
                                         #obtener todas las lavanderias para esa location
                                         res = self.req_backend.getAllLaundrys(location)
-                                        if res != None:
+                                        print res
+                                        if res is None:
                                                 laundrys = res['response']
                                         else:
                                                 print "no hay laundrys disponibles"

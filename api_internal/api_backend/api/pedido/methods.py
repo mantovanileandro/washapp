@@ -45,8 +45,6 @@ def new_pedido():
 	json = request.get_json(force=True)
 	dict_res = {}
 
-	id = service.insertPedido(json)	
-
 	if service.insertPedido(json):
                 dict_res['response'] = 'successful'
         else:

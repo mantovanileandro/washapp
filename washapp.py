@@ -44,7 +44,7 @@ def validate_token():
 def webhook():
 	res = request.get_json(silent=True)
 
-	reqFB = reqFB(res)
+	req_fb = reqFB(res)
 	event = checkEvent(res).get_event()
 	menu = menusFB(url_send,os.environ['TOKEN'],res)
 	req_backend = reqsbackend()
@@ -56,7 +56,7 @@ def webhook():
 
 	elif event is 'message':
 		if menu.solicitar_dato(dic_validador):
-			menu.pedirDato(dic_validador[])
+			menu.pedirDato(dic_validador,False)
 		if menu.contieneTexto('menu'):
 			menu.menu_principal()
 

@@ -41,7 +41,12 @@ class postback:
                                         #obtener la location del usuario
                                         location = self.req_backend.getUserLocation(self.fbid)
                                         #obtener todas las lavanderias para esa location
-                                        laundrys = self.req_backend.getAllLaundrys(location)
+                                        res = self.req_backend.getAllLaundrys(location)
+                                        print res
+                                        if res is None:
+                                                laundrys = res['response']
+                                        else:
+                                                print "no hay laundrys disponibles"
                                         #armar el payload con las lavanderias (mostrar menu)
                                         self.menu.mostrarLaundrys(laundrys)
                                 else:

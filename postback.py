@@ -37,7 +37,7 @@ class postback:
                                         print "mostrar laundry"
 
                                         #obtener la location del usuario
-                                        location = self.req_backend.getUserLocation()
+                                        location = self.req_backend.getUserLocation(self.fbid)
                                         #obtener todas las lavanderias para esa location
                                         laundrys = self.req_backend.getAllLaundrys(location)
                                         #armar el payload con las lavanderias (mostrar menu)

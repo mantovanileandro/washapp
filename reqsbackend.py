@@ -48,6 +48,7 @@ class reqsbackend:
 
 	def getUserLocation(self,fbid):
 		res = requests.get(self.url + "user/fb/" + fbid + "/detail").json()
+		print res
 		return res['localidad']
 
 

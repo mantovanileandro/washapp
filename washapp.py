@@ -10,7 +10,7 @@ from checkEvent import checkEvent
 from postback import postback
 from reqsbackend import reqsbackend
 from validate import validate
-from reqFB import reqFB
+from reqsFB import reqsFB
 
 app = Flask(__name__)
 

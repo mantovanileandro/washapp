@@ -30,14 +30,21 @@ class postback:
 
                 elif self.postback == 'PRINCIPAL_PEDIDO':
                         if self.req_backend.existeUser(self.fbid):
-                                print "EAEAEA"
+
                                 res = self.req_backend.getLastPedido(self.fbid)
                                 if res != None:
                                         #mostrar laundry
                                         print "mostrar laundry"
+
+                                        #obtener la location del usuario
+                                        location = self.req_backend.getUserLocation()
+                                        #obtener todas las lavanderias para esa location
+                                        laundrys = self.req_backend.getAllLaundrys(location)
+                                        #armar el payload con las lavanderias (mostrar menu)
+                                        self.menu.mostrarLaundrys(laundrys)
                                 else:
                                         #mostrar repetir_pedido
-                                        print "mostrar pedido"
+                                        print "mostrar repetir_pedido"
                         else:
                                 print "no existe"
 

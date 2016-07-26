@@ -57,7 +57,9 @@ class reqsbackend:
 			payload['status'] = 'new'
 
 			res = requests.post(self.url + 'pedido/new', data = json.dumps(payload)).json()
-			
+
+			print res
+
 			if res['response'] is 'successful':
 				return True
 			else:

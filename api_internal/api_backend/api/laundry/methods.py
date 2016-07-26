@@ -43,7 +43,7 @@ def parse_laundrys(res):
 
                 new_res['response']['laundrys'].append(dict_res)
 
-	return new_res['response']
+	return new_res
 
 
 ################

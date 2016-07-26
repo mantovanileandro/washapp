@@ -70,7 +70,12 @@ class menusFB:
 		payload['message']['attachment']['payload']['elements'] = []
 		button = {"type":"postback","title":"Volver","payload":"SELECT_LAUNDRY_VOLVER"}
 
+		print laundrys
+
 		for laundry in laundrys:
+
+			print laundry
+
 			btns = []
 			btns.append(button)
 			

@@ -30,11 +30,11 @@ class postback:
                         self.menu.enviarMensaje("STATUS")
 
                 elif self.postback == 'PRINCIPAL_PEDIDO':
-                        print self.req_backend.existeUser(self.fbid)
+ 
                         if self.req_backend.existeUser(self.fbid) == "True":
-                                res = self.req_backend.getLastPedido(self.fbid)
+                                last_pedido = self.req_backend.getLastPedidoByUser(self.fbid)
 
-                                if res is None:
+                                if last_pedido is None:
                                         #mostrar laundrys
 
                                         #obtener la location del usuario
@@ -51,6 +51,17 @@ class postback:
                                 else:
                                         #mostrar repetir_pedido
                                         print "mostrar repetir_pedido"
+
+                                        #mandarlo a que termine de completar el flujo
+                                        if last_pedido['status'] is 'select_laundry':
+                                                #mandarlo a que elija el horario
+                                                print "elejir horario"
+                                        elif last_pedido['status'] is 'select_horario':
+                                                #mandarlo a que complete el pago
+                                                print "completar pago"
+                                        else:
+                                                last_completed_pedido = self.req_backend.getLastPedidoByStatus('completed')
+
                         else:
                                 print "ENTRO AL ELSE"
                                 self.menu.pedirDato(self.dic_validador,True)

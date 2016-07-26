@@ -37,7 +37,7 @@ class reqsbackend:
 		return res['localidad']
 
 
-	def getLastPedido(self,fbid):
+	def getLastPedidoByUser(self,fbid):
 		#obtener el ultimo pedido COMPLETADO (hay que cambiar la api de backend)
 		payload = {}
 		payload['user_id'] = fbid

@@ -10,7 +10,7 @@ from checkEvent import checkEvent
 from postback import postback
 from reqsbackend import reqsbackend
 from validate import validate
-from reqsFB import reqsFB
+
 
 app = Flask(__name__)
 
@@ -44,7 +44,6 @@ def validate_token():
 def webhook():
 	res = request.get_json(silent=True)
 
-	req_fb = reqFB(res)
 	event = checkEvent(res).get_event()
 	menu = menusFB(url_send,os.environ['TOKEN'],res)
 	req_backend = reqsbackend()

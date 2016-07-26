@@ -59,7 +59,7 @@ class reqsbackend:
 		print res
 
 		if not ('error' in res['response']):
-			return res['response']
+			return res
 		else:
 			return None
 

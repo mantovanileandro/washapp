@@ -61,7 +61,9 @@ class postback:
                         self.menu.menu_principal()
                 elif 'SELECT_LAUNDRY_ID_' in self.postback:
                         laundry_id = self.postback.split('_')[-1]
-                        if self.req_backend.setNewPedido(self.fbid, laundry_id):
+                        res = self.req_backend.setNewPedido(self.fbid, laundry_id)
+                        print res
+                        if res:
                                 #mostrar seleccionar horario
                                 print "seleccionar horario"
                         else:

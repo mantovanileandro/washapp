@@ -37,7 +37,9 @@ class reqsbackend:
 		payload['user_id'] = fbid
 		res = requests.post(self.url + 'pedido/detail',data=json.dumps(payload)).json()
 
-		print res.text
+		res = res.json()
+
+		#print res.text
 		#print res.json()
 
 		if not ('error' in res['response']):

@@ -1,4 +1,5 @@
 import requests
+import json
 
 
 class reqsbackend:
@@ -36,7 +37,6 @@ class reqsbackend:
 		payload = {}
 		payload['user_id'] = fbid
 		res = requests.post(self.url + 'pedido/detail',data=json.dumps(payload))
-
 		res = res.json()
 
 		#print res.text

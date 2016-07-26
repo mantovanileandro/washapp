@@ -60,7 +60,9 @@ def new_pedido():
 def get_last_pedido():
 	json = request.get_json(force=True)
         dict_res = {}
-
+	
+	print json
+	
 	res = service.getPedido(json)
 
 	if res is not None:

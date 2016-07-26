@@ -30,7 +30,6 @@ class postback:
 
                 elif self.postback == 'PRINCIPAL_PEDIDO':
                         if self.req_backend.existeUser(self.fbid):
-                                print "EAEAEA"
                                 res = self.req_backend.getLastPedido(self.fbid)
                                 if res != None:
                                         #mostrar laundry
@@ -39,7 +38,7 @@ class postback:
                                         #mostrar repetir_pedido
                                         print "mostrar pedido"
                         else:
-                                print "no existe"
+                                self.menusFB.pedirDato(self.fbid,"INICIA")
 
                 elif self.postback == "TUTORIAL_VOLVER":
                         self.menu.menu_principal()

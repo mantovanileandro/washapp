@@ -116,6 +116,9 @@ class menusFB:
 		quick_replie_2['title'] = 'No :('
 		quick_replie_2['payload'] = 'PEDIDO_REPETIR_QUICK_REPLIE_NO'
 
+		print payload['message']
+		print payload['message']['quick_replies']
+
       	payload['message']['quick_replies'].append(quick_replie)
       	payload['message']['quick_replies'].append(quick_replie_2)
 

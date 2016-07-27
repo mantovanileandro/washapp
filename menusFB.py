@@ -22,6 +22,31 @@ class menusFB:
 		self.token = token
 		self.preguntas = {"INICIA" : "De que localidad sos?" , "LOCALIDAD" : "De que localidad sos?" , "DIRECCION" : "Como es tu direccion?"}
 
+	def mostrarRepetirPedido(self):
+		payload = {}
+		payload['recipient'] = {"id": self.clienteFB.idSender()}
+		payload['message'] = {}
+		payload['message']['text'] = 'Te gustaria repetir el pedido anterior ? :)'
+		
+
+		quick_replie = {}
+		quick_replie['content_type'] = 'text'
+		quick_replie['title'] = 'Si :)'
+		quick_replie['payload'] = 'PEDIDO_REPETIR_QUICK_REPLIE_YES'
+
+		quick_replie_2 = {}
+		quick_replie_2['content_type'] = 'text'
+		quick_replie_2['title'] = 'No :('
+		quick_replie_2['payload'] = 'PEDIDO_REPETIR_QUICK_REPLIE_NO'
+
+		print payload['message']
+		print payload['message']['quick_replies']
+
+		payload['message']['quick_replies'] = [quick_replie, quick_replie_2]
+
+      	res = requests.post(self.url, json=payload)
+
+
 	def menu_principal(self):
 		payload = {}
 		payload['recipient'] = {"id": self.clienteFB.idSender()}
@@ -97,31 +122,6 @@ class menusFB:
 
 
 		res = requests.post(self.url,json=payload)
-
-
-	def mostrarRepetirPedido(self):
-		payload = {}
-		payload['recipient'] = {"id": self.clienteFB.idSender()}
-		payload['message'] = {}
-		payload['message']['text'] = 'Te gustaria repetir el pedido anterior ? :)'
-		
-
-		quick_replie = {}
-		quick_replie['content_type'] = 'text'
-		quick_replie['title'] = 'Si :)'
-		quick_replie['payload'] = 'PEDIDO_REPETIR_QUICK_REPLIE_YES'
-
-		quick_replie_2 = {}
-		quick_replie_2['content_type'] = 'text'
-		quick_replie_2['title'] = 'No :('
-		quick_replie_2['payload'] = 'PEDIDO_REPETIR_QUICK_REPLIE_NO'
-
-		print payload['message']
-		print payload['message']['quick_replies']
-
-		payload['message']['quick_replies'] = [quick_replie, quick_replie_2]
-
-      	res = requests.post(self.url,json=payload)
 
 
 	def enviarMensaje(self,texto):

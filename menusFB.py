@@ -27,7 +27,7 @@ class menusFB:
 		payload['recipient'] = {"id": self.clienteFB.idSender()}
 		payload['message'] = {}
 		payload['message']['text'] = 'Te gustaria repetir el pedido anterior ? :)'
-		
+
 
 		quick_replie = {}
 		quick_replie['content_type'] = 'text'
@@ -44,7 +44,7 @@ class menusFB:
 
 		payload['message']['quick_replies'] = [quick_replie, quick_replie_2]
 
-      	res = requests.post(self.url, json=payload)
+		res = requests.post(self.url, json=payload)
 
 
 	def menu_principal(self):

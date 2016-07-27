@@ -102,7 +102,9 @@ class menusFB:
 	def mostrarRepetirPedido(self):
 		payload = {}
 		payload['recipient'] = {"id": self.clienteFB.idSender()}
-		payload['message'] = {"text":"Te gustaria repetir el pedido anterior ? :)", "quick_replies": []}
+		payload['message'] = {}
+		payload['text'] = 'Te gustaria repetir el pedido anterior ? :)'
+		payload['quick_replies'] = []
 
 		quick_replie = {
         	"content_type":"text",

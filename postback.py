@@ -49,6 +49,8 @@ class postback:
  
                         if self.req_backend.existeUser(self.fbid) == "True":
                                 last_pedido = self.req_backend.getLastPedidoByUser(self.fbid) #arreglar esto para que devuelva el ultimo pedido (ordenar por fecha)
+                                print last_pedido
+                                print self.fbid
 
                                 if last_pedido is None:
 

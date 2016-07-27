@@ -106,17 +106,15 @@ class menusFB:
 		payload['text'] = 'Te gustaria repetir el pedido anterior ? :)'
 		payload['quick_replies'] = []
 
-		quick_replie = {
-        	"content_type":"text",
-        	"title":"Si :)",
-        	"payload":"PEDIDO_REPETIR_QUICK_REPLIE_YES"
-      	}
+		quick_replie = {}
+		quick_replie['content_type'] = 'text'
+		quick_replie['title'] = 'Si :)'
+		quick_replie['payload'] = 'PEDIDO_REPETIR_QUICK_REPLIE_YES'
 
-		quick_replie_2 = {
-        	"content_type":"text",
-        	"title":"No :(",
-        	"payload":"PEDIDO_REPETIR_QUICK_REPLIE_NO"
-      	}
+		quick_replie_2 = {}
+		quick_replie_2['content_type'] = 'text'
+		quick_replie_2['title'] = 'No :('
+		quick_replie_2['payload'] = 'PEDIDO_REPETIR_QUICK_REPLIE_NO'
 
       	payload['message']['quick_replies'].append(quick_replie)
       	payload['message']['quick_replies'].append(quick_replie_2)

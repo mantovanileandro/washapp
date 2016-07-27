@@ -49,34 +49,24 @@ class postback:
  
                         if self.req_backend.existeUser(self.fbid) == "True":
                                 last_pedido = self.req_backend.getLastPedidoByUser(self.fbid) #arreglar esto para que devuelva el ultimo pedido (ordenar por fecha)
-                                print last_pedido
-                                print self.fbid
 
                                 if last_pedido is None:
-
                                         self.mostrar_laundrys()
-                                        
                                 else:
-                                        #mostrar repetir_pedido
-                                        print "mostrar repetir_pedido"
-
                                         #mandarlo a que termine de completar el flujo
                                         if 'select_laundry' in last_pedido['status']:
                                                 #mandarlo a que elija el horario
                                                 print "elejir horario"
-                                        elif last_pedido['status'] is 'select_horario':
+                                        elif 'select_horario' in last_pedido['status']:
                                                 #mandarlo a que complete el pago
                                                 print "completar pago"
                                         else:
-                                                print "entro al else"
                                                 last_completed_pedido = self.req_backend.getLastPedidoByStatus('completed')
 
                                                 if last_completed_pedido is not None:
                                                         self.menu.mostrarRepetirPedido()
-                                                        print 'repetir pedido'
                                                 else:
                                                         self.mostrar_laundrys()
-                                                        print 'laundrys porque no tengo un menu completo'
 
                         else:
                                 print "ENTRO AL ELSE"

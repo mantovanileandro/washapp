@@ -46,7 +46,6 @@ class reqsbackend:
 		payload = {}
 		payload['user_id'] = self.getUserId(fbid)
 		res = requests.post(self.url + 'pedido/detail',data=json.dumps(payload)).json()
-		print res
 
 		if not ('error' in res['response']):
 			return res['response']
@@ -72,8 +71,6 @@ class reqsbackend:
 			payload['status'] = 'new'
 
 			res = requests.post(self.url + 'pedido/new', data = json.dumps(payload)).json()
-
-			print res
 
 			if 'successful' in res['response']:
 				return True

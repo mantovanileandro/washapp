@@ -80,7 +80,6 @@ class menusFB:
 
 
 		res = requests.post(self.url,json=payload)
-		print res
 
 
 	def mostrarLaundrys(self,laundrys):
@@ -94,12 +93,7 @@ class menusFB:
 		button = {"type":"postback","title":"Volver","payload":"SELECT_LAUNDRY_VOLVER"}
 
 
-		print "laundrys ----------"
-		#print laundrys
-
 		for laundry in laundrys['laundrys']:
-
-			#print laundry
 
 			btns = []
 			
@@ -112,11 +106,6 @@ class menusFB:
 			element = json.loads(laundry['desc'])
 			element["buttons"] = btns
 			payload['message']['attachment']['payload']['elements'].append(element)
-
-			print postback
-			
-			#element = {"title": "rift","subtitle": "Next-generation virtual reality","image_url": "http://messengerdemo.parseapp.com/img/rift.png"}
-			#payload['message']['attachment']['payload']['elements'].append(element)
 
 
 		res = requests.post(self.url,json=payload)

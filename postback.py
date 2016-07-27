@@ -22,19 +22,19 @@ class postback:
 
 
         def mostrar_laundrys(self):
-        #mostrar laundrys
+                #mostrar laundrys
 
-        #obtener la location del usuario
-        location = self.req_backend.getUserLocation(self.fbid)
-        #obtener todas las lavanderias para esa location
-        res = self.req_backend.getAllLaundrys(location)
+                #obtener la location del usuario
+                location = self.req_backend.getUserLocation(self.fbid)
+                #obtener todas las lavanderias para esa location
+                res = self.req_backend.getAllLaundrys(location)
 
-        if res != None:
-                laundrys = res['response']
-                #aca puedo pasar el algoritmo de ordenamiento y filtrado de laundrys
-                self.menu.mostrarLaundrys(laundrys)
-        else:
-                print "no hay laundrys disponibles"
+                if res != None:
+                        laundrys = res['response']
+                        #aca puedo pasar el algoritmo de ordenamiento y filtrado de laundrys
+                        self.menu.mostrarLaundrys(laundrys)
+                else:
+                        print "no hay laundrys disponibles"
 
 
         def derivar_postback(self):
@@ -67,7 +67,7 @@ class postback:
                                                 print "completar pago"
                                         else:
                                                 last_completed_pedido = self.req_backend.getLastPedidoByStatus('completed')
-                                                
+
                                                 if last_completed_pedido is not None:
                                                         self.menu.mostrarRepetirPedido()
                                                 else:

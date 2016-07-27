@@ -48,6 +48,16 @@ class reqsbackend:
 		else:
 			return None
 
+	def getLastPedidoByStatus(self,status):
+		#obtener el ultimo pedido COMPLETADO (hay que cambiar la api de backend)
+		payload = {}
+		payload['status'] = status
+		res = requests.post(self.url + 'pedido/detail',data=json.dumps(payload)).json()
+
+		if not ('error' in res['response']):
+			return res['response']
+		else:
+			return None
 
 	def setNewPedido(self,fbid,laundry_id):
 

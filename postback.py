@@ -21,6 +21,22 @@ class postback:
                 self.dic_validador = dic_validador
 
 
+        def mostrar_laundrys(self):
+        #mostrar laundrys
+
+        #obtener la location del usuario
+        location = self.req_backend.getUserLocation(self.fbid)
+        #obtener todas las lavanderias para esa location
+        res = self.req_backend.getAllLaundrys(location)
+
+        if res != None:
+                laundrys = res['response']
+                #aca puedo pasar el algoritmo de ordenamiento y filtrado de laundrys
+                self.menu.mostrarLaundrys(laundrys)
+        else:
+                print "no hay laundrys disponibles"
+
+
         def derivar_postback(self):
 
                 if self.postback == 'PRINCIPAL_TUTORIAL':
@@ -32,21 +48,11 @@ class postback:
                 elif self.postback == 'PRINCIPAL_PEDIDO':
  
                         if self.req_backend.existeUser(self.fbid) == "True":
-                                last_pedido = self.req_backend.getLastPedidoByUser(self.fbid)
+                                last_pedido = self.req_backend.getLastPedidoByUser(self.fbid) #arreglar esto para que devuelva el ultimo pedido (ordenar por fecha)
 
                                 if last_pedido is None:
-                                        #mostrar laundrys
 
-                                        #obtener la location del usuario
-                                        location = self.req_backend.getUserLocation(self.fbid)
-                                        #obtener todas las lavanderias para esa location
-                                        res = self.req_backend.getAllLaundrys(location)
-
-                                        if res != None:
-                                                laundrys = res['response']
-                                                self.menu.mostrarLaundrys(laundrys)
-                                        else:
-                                                print "no hay laundrys disponibles"
+                                        self.mostrar_laundrys()
                                         
                                 else:
                                         #mostrar repetir_pedido
@@ -61,6 +67,11 @@ class postback:
                                                 print "completar pago"
                                         else:
                                                 last_completed_pedido = self.req_backend.getLastPedidoByStatus('completed')
+                                                
+                                                if last_completed_pedido is not None:
+                                                        self.menu.mostrarRepetirPedido()
+                                                else:
+                                                        self.mostrar_laundrys()
 
                         else:
                                 print "ENTRO AL ELSE"

@@ -98,6 +98,31 @@ class menusFB:
 
 		res = requests.post(self.url,json=payload)
 
+
+	def mostrarRepetirPedido(self):
+		payload = {}
+		payload['recipient'] = {"id": self.clienteFB.idSender()}
+		payload['message'] = {"text":"Te gustaria repetir el pedido anterior ? :)", "quick_replies": []}
+
+		quick_replie = {
+        	"content_type":"text",
+        	"title":"Si :)",
+        	"payload":"PEDIDO_REPETIR_QUICK_REPLIE_YES"
+      	}
+
+		payload['message']['quick_replies'].append(quick_replie)
+
+		quick_replie = {
+        	"content_type":"text",
+        	"title":"No :(",
+        	"payload":"PEDIDO_REPETIR_QUICK_REPLIE_NO"
+      	}
+
+      	payload['message']['quick_replies'].append(quick_replie)
+
+      	res = requests.post(self.url,json=payload)
+
+
 	def enviarMensaje(self,texto):
 		payload = {"recipient": {"id":self.clienteFB.idSender()},"message": {"text":texto}}
 		res = requests.post(self.url,json=payload)

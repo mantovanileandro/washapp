@@ -68,6 +68,7 @@ class postback:
                                                 #mandarlo a que complete el pago
                                                 print "completar pago"
                                         else:
+                                                print "entro al else"
                                                 last_completed_pedido = self.req_backend.getLastPedidoByStatus('completed')
 
                                                 if last_completed_pedido is not None:

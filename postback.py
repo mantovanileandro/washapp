@@ -70,8 +70,10 @@ class postback:
 
                                                 if last_completed_pedido is not None:
                                                         self.menu.mostrarRepetirPedido()
+                                                        print 'repetir pedido'
                                                 else:
                                                         self.mostrar_laundrys()
+                                                        'print laundrys porque no tengo un menu completo'
 
                         else:
                                 print "ENTRO AL ELSE"

@@ -110,15 +110,14 @@ class menusFB:
         	"payload":"PEDIDO_REPETIR_QUICK_REPLIE_YES"
       	}
 
-		payload['message']['quick_replies'].append(quick_replie)
-
-		quick_replie = {
+		quick_replie_2 = {
         	"content_type":"text",
         	"title":"No :(",
         	"payload":"PEDIDO_REPETIR_QUICK_REPLIE_NO"
       	}
 
       	payload['message']['quick_replies'].append(quick_replie)
+      	payload['message']['quick_replies'].append(quick_replie_2)
 
       	res = requests.post(self.url,json=payload)
 

@@ -16,6 +16,10 @@ class reqsbackend:
 				datos.append(key)
 		return datos
 
+	def getUserId(self,fbid):
+		res = requests.get(self.url + 'user/fb/' + fbid + '/detail').json()
+		return res['user_id']
+
 
 	def existeUser(self,idfb):
 		res = requests.get(self.url + 'user/fb/' + idfb).json()
@@ -32,31 +36,52 @@ class reqsbackend:
 			return False
 
 
-	def getLastPedido(self,fbid):
+	def getUserLocation(self,fbid):
+		res = requests.get(self.url + "user/fb/" + fbid + "/detail").json()
+		return res['localidad']
+
+
+	def getLastPedidoByUser(self,fbid):
 		#obtener el ultimo pedido COMPLETADO (hay que cambiar la api de backend)
 		payload = {}
-		payload['user_id'] = fbid
+		payload['user_id'] = self.getUserId(fbid)
 		res = requests.post(self.url + 'pedido/detail',data=json.dumps(payload)).json()
-
-		print res
 
 		if not ('error' in res['response']):
 			return res['response']
 		else:
 			return None
 
+	def getLastPedidoByStatus(self,status):
+		#obtener el ultimo pedido COMPLETADO (hay que cambiar la api de backend)
+		payload = {}
+		payload['status'] = status
+		res = requests.post(self.url + 'pedido/detail',data=json.dumps(payload)).json()
 
-	def getUserLocation(self,fbid):
-		res = requests.get(self.url + "user/fb/" + fbid + "/detail").json()
-		return res['localidad']
+		if not ('error' in res['response']):
+			return res['response']
+		else:
+			return None
+
+	def setNewPedido(self,fbid,laundry_id):
+
+			payload = {}
+			payload['user_fb'] = fbid
+			payload['laundry'] = laundry_id
+			payload['status'] = 'new'
+
+			res = requests.post(self.url + 'pedido/new', data = json.dumps(payload)).json()
+
+			if 'successful' in res['response']:
+				return True
+			else:
+				return False
 
 
 	def getAllLaundrys(self,localidad):
 		payload = {}
 		payload['localidad'] = localidad
 		res = requests.post(self.url + 'laundry/getall',data=json.dumps(payload)).json()
-
-		print res
 
 		if not ('error' in res['response']):
 			return res

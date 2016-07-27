@@ -24,17 +24,16 @@ pedido_blueprint = Blueprint(
 
 def parse_pedido(res):
         new_res = {"response":{}}
-        dict_res = new_res['response']
-        dict_res['id'] = res['id']
-        dict_res['user'] = res['user_id']
-        dict_res['laundry'] = res['laundry_id']
-        dict_res['payment'] = res['payment_id']
-        dict_res['delivery'] = res['delivery_id']
-        dict_res['date'] = res['date_pedido']
-        dict_res['status'] = res['status']
-        dict_res['reclamo'] = res['reclamo_id']
+        new_res['response']['id'] = res['id']
+        new_res['response']['user'] = res['user_id']
+        new_res['response']['laundry'] = res['laundry_id']
+        new_res['response']['payment'] = res['payment_id']
+        new_res['response']['delivery'] = res['delivery_id']
+        new_res['response']['date'] = res['date_pedido']
+        new_res['response']['status'] = res['status']
+        new_res['response']['reclamo'] = res['reclamo_id']
 
-        return dict_res
+        return new_res
 
 ################
 #### routes ####
@@ -44,8 +43,6 @@ def parse_pedido(res):
 def new_pedido():
 	json = request.get_json(force=True)
 	dict_res = {}
-
-	id = service.insertPedido(json)	
 
 	if service.insertPedido(json):
                 dict_res['response'] = 'successful'

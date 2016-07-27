@@ -21,6 +21,22 @@ class postback:
                 self.dic_validador = dic_validador
 
 
+        def mostrar_laundrys(self):
+                #mostrar laundrys
+
+                #obtener la location del usuario
+                location = self.req_backend.getUserLocation(self.fbid)
+                #obtener todas las lavanderias para esa location
+                res = self.req_backend.getAllLaundrys(location)
+
+                if res != None:
+                        laundrys = res['response']
+                        #aca puedo pasar el algoritmo de ordenamiento y filtrado de laundrys
+                        self.menu.mostrarLaundrys(laundrys)
+                else:
+                        print "no hay laundrys disponibles"
+
+
         def derivar_postback(self):
 
                 if self.postback == 'PRINCIPAL_TUTORIAL':
@@ -30,32 +46,51 @@ class postback:
                         self.menu.enviarMensaje("STATUS")
 
                 elif self.postback == 'PRINCIPAL_PEDIDO':
-                        print self.req_backend.existeUser(self.fbid)
+ 
                         if self.req_backend.existeUser(self.fbid) == "True":
-                                res = self.req_backend.getLastPedido(self.fbid)
+                                last_pedido = self.req_backend.getLastPedidoByUser(self.fbid) #arreglar esto para que devuelva el ultimo pedido (ordenar por fecha)
 
-                                if res is None:
-                                        #mostrar laundry
-                                        print "mostrar laundry"
-
-                                        #obtener la location del usuario
-                                        location = self.req_backend.getUserLocation(self.fbid)
-                                        #obtener todas las lavanderias para esa location
-                                        res = self.req_backend.getAllLaundrys(location)
-                                        print res
-                                        if res != None:
-                                                laundrys = res['response']
-                                                self.menu.mostrarLaundrys(laundrys)
-                                        else:
-                                                print "no hay laundrys disponibles"
-                                        #armar el payload con las lavanderias (mostrar menu)
-                                        
+                                if last_pedido is None:
+                                        self.mostrar_laundrys()
                                 else:
-                                        #mostrar repetir_pedido
-                                        print "mostrar repetir_pedido"
+                                        #mandarlo a que termine de completar el flujo
+                                        if 'select_laundry' in last_pedido['status']:
+                                                #mandarlo a que elija el horario
+                                                print "elejir horario"
+                                        elif 'select_horario' in last_pedido['status']:
+                                                #mandarlo a que complete el pago
+                                                print "completar pago"
+                                        else:
+                                                last_completed_pedido = self.req_backend.getLastPedidoByStatus('completed')
+
+                                                if last_completed_pedido is not None:
+                                                        self.menu.mostrarRepetirPedido()
+                                                else:
+                                                        self.mostrar_laundrys()
+
                         else:
                                 print "ENTRO AL ELSE"
                                 self.menu.pedirDato(self.dic_validador,True)
 
                 elif self.postback == "TUTORIAL_VOLVER":
                         self.menu.menu_principal()
+                elif self.postback == 'SELECT_LAUNDRY_VOLVER':
+                        self.menu.menu_principal()
+                elif 'SELECT_LAUNDRY_ID_' in self.postback:
+                        laundry_id = self.postback.split('_')[-1]
+                        print self.postback
+                        print laundry_id
+                        res = self.req_backend.setNewPedido(self.fbid, laundry_id)
+                        print res
+                        if res:
+                                #mostrar seleccionar horario
+                                print "seleccionar horario"
+                        else:
+                                print "hubo un error al insertar la lavanderia"
+
+
+
+
+
+
+

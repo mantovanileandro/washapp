@@ -25,6 +25,7 @@ user_blueprint = Blueprint(
 def parse_user(res):
 	new_res = {"response":{}}
 	dict_res = new_res['response']
+	dict_res['user_id'] = res['id']
 	dict_res['name'] = res['firstname']
 	dict_res['surname'] = res['lastname']
  	dict_res['email'] = res['email']

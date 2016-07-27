@@ -61,7 +61,7 @@ class postback:
                                         print "mostrar repetir_pedido"
 
                                         #mandarlo a que termine de completar el flujo
-                                        if last_pedido['status'] is 'select_laundry':
+                                        if 'select_laundry' in last_pedido['status']:
                                                 #mandarlo a que elija el horario
                                                 print "elejir horario"
                                         elif last_pedido['status'] is 'select_horario':

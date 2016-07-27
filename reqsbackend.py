@@ -16,6 +16,10 @@ class reqsbackend:
 				datos.append(key)
 		return datos
 
+	def getUserId(self,fbid):
+		res = requests.get(self.url + 'user/fb/' + fbid + '/detail').json()
+		return res['user_id']
+
 
 	def existeUser(self,idfb):
 		res = requests.get(self.url + 'user/fb/' + idfb).json()
@@ -40,7 +44,7 @@ class reqsbackend:
 	def getLastPedidoByUser(self,fbid):
 		#obtener el ultimo pedido COMPLETADO (hay que cambiar la api de backend)
 		payload = {}
-		payload['user_id'] = fbid
+		payload['user_id'] = self.getUserId(fbid)
 		res = requests.post(self.url + 'pedido/detail',data=json.dumps(payload)).json()
 		print res
 

@@ -73,7 +73,7 @@ class postback:
                                                         print 'repetir pedido'
                                                 else:
                                                         self.mostrar_laundrys()
-                                                        'print laundrys porque no tengo un menu completo'
+                                                        print 'laundrys porque no tengo un menu completo'
 
                         else:
                                 print "ENTRO AL ELSE"

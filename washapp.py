@@ -55,6 +55,7 @@ def webhook():
 
 	elif event is 'message':
 		if menu.solicitar_dato(dic_validador):
+			print res
 			menu.pedirDato(dic_validador,False)
 		if menu.contieneTexto('menu'):
 			menu.menu_principal()

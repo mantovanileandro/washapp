@@ -104,7 +104,7 @@ class menusFB:
 		payload['recipient'] = {"id": self.clienteFB.idSender()}
 		payload['message'] = {}
 		payload['message']['text'] = 'Te gustaria repetir el pedido anterior ? :)'
-		payload['message']['quick_replies'] = []
+		
 
 		quick_replie = {}
 		quick_replie['content_type'] = 'text'
@@ -119,8 +119,7 @@ class menusFB:
 		print payload['message']
 		print payload['message']['quick_replies']
 
-      	payload['message']['quick_replies'].append(quick_replie)
-      	payload['message']['quick_replies'].append(quick_replie_2)
+		payload['message']['quick_replies'] = [quick_replie, quick_replie_2]
 
       	res = requests.post(self.url,json=payload)
 

@@ -31,16 +31,26 @@ class menusFB:
 
 		quick_replie = {}
 		quick_replie['content_type'] = 'text'
-		quick_replie['title'] = 'Si :)'
+		quick_replie['title'] = 'Si'
 		quick_replie['payload'] = 'PEDIDO_REPETIR_QUICK_REPLIE_YES'
 
 		quick_replie_2 = {}
 		quick_replie_2['content_type'] = 'text'
-		quick_replie_2['title'] = 'No :('
+		quick_replie_2['title'] = 'No'
 		quick_replie_2['payload'] = 'PEDIDO_REPETIR_QUICK_REPLIE_NO'
 
+		quick_replie_3 = {}
+		quick_replie_3['content_type'] = 'text'
+		quick_replie_3['title'] = 'Cambiar Lavanderia'
+		quick_replie_3['payload'] = 'PEDIDO_REPETIR_QUICK_REPLIE_CAMBIAR_LAUNDRY'
 
-		payload['message']['quick_replies'] = [quick_replie, quick_replie_2]
+		quick_replie_4 = {}
+		quick_replie_4['content_type'] = 'text'
+		quick_replie_4['title'] = 'Cambiar Horario'
+		quick_replie_4['payload'] = 'PEDIDO_REPETIR_QUICK_REPLIE_CAMBIAR_HORARIO'
+
+
+		payload['message']['quick_replies'] = [quick_replie, quick_replie_2, quick_replie_3, quick_replie_4]
 
 		res = requests.post(self.url, json=payload)
 

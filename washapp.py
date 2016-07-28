@@ -59,7 +59,7 @@ def webhook():
 		postback_obj.derivar_postback()
 
 	elif event is 'message':
-		if menu.solicitar_dato():
+		if menu.guardar_y_solicitar_dato():
 			menu.pedirDato()
 		if menu.contieneTexto('menu'):
 			menu.menu_principal()

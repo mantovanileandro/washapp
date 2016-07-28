@@ -48,6 +48,8 @@ class postback:
                         self.menu.mostrarTutorial()
 
                 elif self.postback == 'PRINCIPAL_STATUS':
+                        usuario = self.req_backend.estaCompleto(self.fbid)
+                        print usuario
                         self.menu.enviarMensaje("STATUS")
 
                 elif self.postback == 'PRINCIPAL_PEDIDO':

@@ -13,7 +13,7 @@ class postback:
                 self.event = req['entry'][0]['messaging'][0]
 
                 if self.event.has_key('message'):
-                        self.postback = self.event['message']['quick_replie']['payload']
+                        self.postback = self.event['message']['quick_reply']['payload']
                 else:
                         self.postback = self.event['postback']['payload']
                         

@@ -16,8 +16,9 @@ class checkEvent:
                         for event in self.events:
                                 if req.has_key(event):
 
-                                        if event == 'message' and req.has_key('quick_reply'):
-                                                return 'postback'
+                                        if event == 'message':
+                                                if req['message'].has_key('quick_reply'):
+                                                        return 'postback'
 
                                         return event
 

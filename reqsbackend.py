@@ -88,6 +88,17 @@ class reqsbackend:
 		else:
 			return None
 
+	def modify(self,key,value,idfb):
+		payload = {"user_fb" : idfb , key : value}
+
+		res = requests.post(self.url + 'modify',data=json.dumps(payload)).json()
+
+		if not ('error' in res['response']):
+			return res
+		else:
+			return None
+
+
 
 
 

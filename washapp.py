@@ -11,8 +11,7 @@ from postback import postback
 from reqsbackend import reqsbackend
 from validate import validate
 
-import urllib3
-urllib3.disable_warnings()
+requests.packages.urllib3.disable_warnings()
 
 
 app = Flask(__name__)

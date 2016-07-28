@@ -141,5 +141,5 @@ class menusFB:
 
 	def pedirDato(self):
 		datos = self.reqbackend.estaCompleto(self.clienteFB.idSender())
-		self.enviarMensaje(self.preguntas[dato[0]])
-		self.usuarios_faltantes[self.clienteFB.idSender()] = dato[0]
+		self.enviarMensaje(self.preguntas[datos[0]])
+		self.usuarios_faltantes[self.clienteFB.idSender()] = datos[0]

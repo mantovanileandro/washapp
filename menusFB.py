@@ -138,7 +138,7 @@ class menusFB:
 	def guardar_y_solicitar_dato(self):
 		if self.usuarios_faltantes.has_key(self.clienteFB.idSender()):
 			self.reqbackend.modify(self.usuarios_faltantes[self.clienteFB.idSender()],self.get_texto(),self.clienteFB.idSender())
-			if self.reqbackend.estaCompleto(self.clienteFB.idSender()):
+			if len(self.reqbackend.estaCompleto(self.clienteFB.idSender())) == 0:
 				return False
 			else:
 				return True

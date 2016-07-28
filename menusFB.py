@@ -6,22 +6,16 @@ from reqsFB import reqsFB
 from reqsbackend import reqsbackend
 
 
-def buscarUsuarioEnDic(dic,fbid):
-        for id_fb in dic:
-                if id_fb == fbid:
-                        return True
-        return False
-
 
 class menusFB:
-	def __init__(self,url,token,req):
+	def __init__(self,url,token,req,usuarios_faltantes):
 		self.url = url + token
 		self.clienteFB = reqsFB(req)
 		self.req = req
 		self.reqbackend = reqsbackend()
 		self.token = token
-		self.preguntas = {"INICIA" : "De que localidad sos?" , "LOCALIDAD" : "De que localidad sos?" , "DIRECCION" : "Como es tu direccion?"}
-
+		self.preguntas = {"localidad" : "De que localidad sos?" , "address" : "Como es tu direccion?"}
+		self.usuarios_faltantes = usuarios_faltantes
 	def mostrarRepetirPedido(self):
 		payload = {}
 		payload['recipient'] = {"id": self.clienteFB.idSender()}
@@ -136,33 +130,16 @@ class menusFB:
 						return True
 		return False
 
-	def solicitar_dato(self,dic):
-		for id_fb in dic:
-			if id_fb == self.clienteFB.idSender():
+	def guardar_y_solicitar_dato(self):
+		if self.usuarios_faltantes.has_key(self.clienteFB.idSender()):
+			# guardar en base idfb , key , valor
+			if self.req_backend.estaCompleto(self.clienteFB.idSender()):
+				return False
+			else:
 				return True
-		return False
 
 
-
-
-	def pedirDato(self,dic_validador,val):
-		if val == True:
-			dic_validador[self.clienteFB.idSender()] = "LOCALIDAD"
-			self.enviarMensaje(self.preguntas["LOCALIDAD"])
-			return
-		
-		dato = dic_validador[self.clienteFB.idSender()]
-		print dato		
-		
-		if dato == "LOCALIDAD":
-			dic_validador[self.clienteFB.idSender()] = "DIRECCION"
-			self.enviarMensaje(self.preguntas["DIRECCION"])
-
-
-
-
-
-
-
-
-
+	def pedirDato(self):
+		datos = self.req_backend.estaCompleto(self.clienteFB.idSender())
+		self.enviarMensaje(self.preguntas[dato[0]])
+		self.usuarios_faltantes[self.clienteFB.idSender()] = dato[0]

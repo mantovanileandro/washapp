@@ -11,6 +11,8 @@ from postback import postback
 from reqsbackend import reqsbackend
 from validate import validate
 
+requests.packages.urllib3.disable_warnings()
+
 
 app = Flask(__name__)
 
@@ -49,8 +51,15 @@ def webhook():
 	req_backend = reqsbackend()
 	validate_obj = validate(url_send,os.environ['TOKEN'],res)
 
+	print res
+
 	if event is 'postback':
+<<<<<<< HEAD
 		postback_obj = postback(res,menu,validate_obj)
+=======
+		print event
+		postback_obj = postback(res,menu,validate_obj,dic_validador)
+>>>>>>> 0a02817304aeda18c6745c6186d667958129075c
 		postback_obj.derivar_postback()
 
 	elif event is 'message':

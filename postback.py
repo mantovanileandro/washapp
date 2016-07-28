@@ -130,6 +130,7 @@ class postback:
 
                 elif self.postback == 'PEDIDO_REPETIR_QUICK_REPLIE_CAMBIAR_LAUNDRY':
                         #mostrarle solo las lavanderias y desp mandarlo a terminar el pedido
+                        print "repetir pedido cambiar laundry"
                         self.mostrar_laundrys('CAMBIAR_LAUNDRY')
 
                 elif self.postback == 'PEDIDO_REPETIR_QUICK_REPLIE_CAMBIAR_HORARIO':

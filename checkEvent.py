@@ -15,6 +15,10 @@ class checkEvent:
                 for req in res:
                         for event in self.events:
                                 if req.has_key(event):
+
+                                        if event == 'message' and req.has_key('quick_reply'):
+                                                return 'postback'
+
                                         return event
 
                         return None

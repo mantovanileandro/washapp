@@ -12,7 +12,11 @@ class postback:
                 #self.req = req
                 self.event = req['entry'][0]['messaging'][0]
 
-                self.postback = self.event['postback']['payload']
+                if self.event.has_key('message'):
+                        self.postback = self.event['message']['quick_replie']['payload']
+                else:
+                        self.postback = self.event['postback']['payload']
+                        
                 self.fbid = self.event['sender']['id']
 
                 self.menu = menusFB

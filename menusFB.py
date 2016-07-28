@@ -130,7 +130,7 @@ class menusFB:
 						return True
 		return False
 
-	def get_texto():
+	def get_texto(self):
 		res = self.req['entry'][0]['messaging'][0]['message']['text']
 		return res		
 

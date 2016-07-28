@@ -52,6 +52,7 @@ class menusFB:
 
 		payload['message']['quick_replies'] = [quick_replie, quick_replie_2, quick_replie_3, quick_replie_4]
 
+		print quick_replie_3['payload']
 		res = requests.post(self.url, json=payload)
 
 
@@ -92,7 +93,7 @@ class menusFB:
 		res = requests.post(self.url,json=payload)
 
 
-	def mostrarLaundrys(self,laundrys):
+	def mostrarLaundrys(self,laundrys,scope):
 		payload = {}
 		payload['recipient'] = {"id":self.clienteFB.idSender()}
 		payload['message'] = {"attachment":{}}
@@ -107,7 +108,7 @@ class menusFB:
 
 			btns = []
 			
-			postback = 'SELECT_LAUNDRY_ID_%s' %laundry['id']
+			postback = 'SELECT_LAUNDRY_%s_ID_%s' %(scope, laundry['id'])
 			button2 = {"type":"postback","title":"Seleccionar","payload": postback}
 			btns.append(button2)
 

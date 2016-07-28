@@ -132,6 +132,7 @@ class menusFB:
 
 	def get_texto(self):
 		res = self.req['entry'][0]['messaging'][0]['message']['text']
+		print "TEXTO   " + res
 		return res		
 
 	def guardar_y_solicitar_dato(self):

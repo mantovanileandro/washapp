@@ -52,6 +52,7 @@ def webhook():
 	validate_obj = validate(url_send,os.environ['TOKEN'],res)
 
 	if event is 'postback':
+		print event
 		postback_obj = postback(res,menu,validate_obj,dic_validador)
 		postback_obj.derivar_postback()
 

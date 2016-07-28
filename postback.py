@@ -8,7 +8,7 @@ from reqsbackend import reqsbackend
 
 
 class postback:
-        def __init__(self,req,menusFB,validate,dic_validador):
+        def __init__(self,req,menusFB,validate):
                 #self.req = req
                 self.event = req['entry'][0]['messaging'][0]
 
@@ -18,7 +18,6 @@ class postback:
                 self.menu = menusFB
                 self.validate = validate
                 self.req_backend = reqsbackend()
-                self.dic_validador = dic_validador
 
 
         def mostrar_laundrys(self):
@@ -48,8 +47,8 @@ class postback:
                         self.menu.enviarMensaje("STATUS")
 
                 elif self.postback == 'PRINCIPAL_PEDIDO':
- 
-                        if self.req_backend.existeUser(self.fbid) == "True":
+                        
+                        if self.req_backend.estaCompleto(self.fbid) == "[]":
                                 last_pedido = self.req_backend.getLastPedidoByUser(self.fbid) #arreglar esto para que devuelva el ultimo pedido (ordenar por fecha)
 
                                 if last_pedido is None:
@@ -72,7 +71,7 @@ class postback:
 
                         else:
                                 print "ENTRO AL ELSE"
-                                self.menu.pedirDato(self.dic_validador,True)
+                                self.menu.pedirDato()
 
                 elif self.postback == "TUTORIAL_VOLVER":
                         self.menu.menu_principal()

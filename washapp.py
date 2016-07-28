@@ -54,12 +54,8 @@ def webhook():
 	print res
 
 	if event is 'postback':
-<<<<<<< HEAD
-		postback_obj = postback(res,menu,validate_obj)
-=======
 		print event
-		postback_obj = postback(res,menu,validate_obj,dic_validador)
->>>>>>> 0a02817304aeda18c6745c6186d667958129075c
+		postback_obj = postback(res,menu,validate_obj)
 		postback_obj.derivar_postback()
 
 	elif event is 'message':

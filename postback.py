@@ -56,8 +56,8 @@ class postback:
                         self.menu.enviarMensaje("STATUS")
 
                 elif self.postback == 'PRINCIPAL_PEDIDO':
-                        
-                        if self.req_backend.estaCompleto(self.fbid) == "[]":
+                        datos_usuario = self.req_backend.estaCompleto(self.fbid)
+                        if len(datos_usuario) == 0:
                                 last_pedido = self.req_backend.getLastPedidoByUser(self.fbid) #arreglar esto para que devuelva el ultimo pedido (ordenar por fecha)
 
                                 if last_pedido is None:

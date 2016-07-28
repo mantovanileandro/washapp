@@ -133,13 +133,13 @@ class menusFB:
 	def guardar_y_solicitar_dato(self):
 		if self.usuarios_faltantes.has_key(self.clienteFB.idSender()):
 			# guardar en base idfb , key , valor
-			if self.req_backend.estaCompleto(self.clienteFB.idSender()):
+			if self.reqbackend.estaCompleto(self.clienteFB.idSender()):
 				return False
 			else:
 				return True
 
 
 	def pedirDato(self):
-		datos = self.req_backend.estaCompleto(self.clienteFB.idSender())
-		self.enviarMensaje(self.preguntas[dato[0]])
-		self.usuarios_faltantes[self.clienteFB.idSender()] = dato[0]
+		datos = self.reqbackend.estaCompleto(self.clienteFB.idSender())
+		self.enviarMensaje(self.preguntas[datos[0]])
+		self.usuarios_faltantes[self.clienteFB.idSender()] = datos[0]

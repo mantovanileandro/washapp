@@ -16,7 +16,7 @@ requests.packages.urllib3.disable_warnings()
 
 app = Flask(__name__)
 
-usuarios_faltantes = []
+usuarios_faltantes = {}
 url_send = 'https://graph.facebook.com/v2.6/me/messages?access_token='
 url_user_datos = 'https://graph.facebook.com/v2.6/<USER_ID>?fields=first_name,last_name,gender&access_token='
 
@@ -60,7 +60,7 @@ def webhook():
 		postback_obj.derivar_postback()
 
 	elif event is 'message':
-		if menu.solicitar_dato():
+		if menu.guardar_y_solicitar_dato():
 			menu.pedirDato()
 		if menu.contieneTexto('menu'):
 			menu.menu_principal()
